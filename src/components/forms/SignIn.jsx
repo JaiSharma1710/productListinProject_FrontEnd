@@ -1,10 +1,27 @@
+import { useForm } from 'react-hook-form';
+
 import { IMG_CDN } from '../../constants/IMG_CDN';
 import { ICONS } from '../../constants/ICON_SVG';
+
+import { UseSignIn } from '../../logic/signInSignUp/signIn';
+
+import { Input } from '../global/Input';
 import Button from '../global/Button';
 
 const { SIGN_IN } = IMG_CDN;
 
 function SignIn({ setSignInSignUpState }) {
+  const { signInSubmitHandler } = UseSignIn();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const { email: emailError, password: passwordError } = errors;
+
   return (
     <div className="w-1/3 h-full flex flex-col-reverse justify-end lg:flex-row">
       <div className="w-full h-1/2 flex flex-col gap-4 justify-start items-start px-8 lg:p-10 lg:h-full lg:w-1/2">
@@ -17,22 +34,18 @@ function SignIn({ setSignInSignUpState }) {
             Back
           </p>
         </div>
-        <form className="w-full h-full flex flex-col justify-center gap-3 lg:gap-8">
+        <form
+          onSubmit={handleSubmit(signInSubmitHandler)}
+          className="w-full h-full flex flex-col justify-center gap-3 lg:gap-8"
+        >
           <p>Sign In</p>
-          <input
-            type="email"
-            className="border border-gray-300 rounded px-2 outline-none w-full h-10"
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            className="border border-gray-300 rounded px-2 outline-none w-full h-10"
-            placeholder="Password"
-          />
+          <Input.Email error={emailError} register={register} />
+          <Input.Password error={passwordError} register={register} />
           <Button>Sign In</Button>
           <Button
+            type="submit"
             className="flex justify-center items-center gap-2"
-            type="outlined"
+            btnStyle="outlined"
           >
             <ICONS.GOOGLE /> Sign In with Google
           </Button>

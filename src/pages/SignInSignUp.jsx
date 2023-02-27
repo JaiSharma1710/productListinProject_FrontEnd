@@ -18,7 +18,7 @@ function SignInSignUp() {
   const [SignInSignUpState, setSignInSignUpState] = useState('default');
 
   return (
-    <div className="w-screen h-screen bg-violet-200 flex justify-center items-center">
+    <div className="w-screen h-screen bg-violet-100 flex justify-center items-center">
       <div className="w-4/5 h-4/5 rounded-lg shadow-xl bg-white overflow-hidden">
         <div
           className={`w-[300%] h-full flex ${transition[SignInSignUpState]} duration-500`}
@@ -45,7 +45,10 @@ const SignInSignUpScreen = ({ setSignInSignUpState }) => (
       </h1>
       <span className="w-full flex flex-col items-center gap-4">
         <Button onClick={() => setSignInSignUpState('signIn')}>Sign In</Button>
-        <Button onClick={() => setSignInSignUpState('signUp')} type="outlined">
+        <Button
+          onClick={() => setSignInSignUpState('signUp')}
+          btnStyle="outlined"
+        >
           Sign Up
         </Button>
       </span>

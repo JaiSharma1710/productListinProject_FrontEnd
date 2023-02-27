@@ -1,4 +1,4 @@
-import SignInSignUp from './screens/SignInSignUp';
+import SignInSignUp from './pages/SignInSignUp';
 
 function App() {
   return (
