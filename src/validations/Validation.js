@@ -31,6 +31,30 @@ export const Validation = {
       message: 'Please enter your last name',
     },
   },
+  AddressValidation: {
+    required: {
+      value: true,
+      message: 'Please enter your Address',
+    },
+  },
+  CityValidation: {
+    required: {
+      value: true,
+      message: 'Please enter your City',
+    },
+  },
+  StateValidation: {
+    required: {
+      value: true,
+      message: 'Please enter your State',
+    },
+  },
+  CountryValidation: {
+    required: {
+      value: true,
+      message: 'Please enter your Country',
+    },
+  },
   PhoneNumberValidation: {
     required: {
       value: true,

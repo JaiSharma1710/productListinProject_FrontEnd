@@ -19,7 +19,7 @@ function SignInSignUp() {
 
   return (
     <div className="w-screen h-screen bg-violet-100 flex justify-center items-center">
-      <div className="w-4/5 h-4/5 rounded-lg shadow-xl bg-white overflow-hidden">
+      <div className="w-4/5 h-auto lg:h-4/5 rounded-lg shadow-xl bg-white overflow-hidden">
         <div
           className={`w-[300%] h-full flex ${transition[SignInSignUpState]} duration-500`}
         >

@@ -27,26 +27,13 @@ export const Input = {
       )}
     </div>
   ),
-  FirstName: ({ register, error }) => (
+  Text: ({ name, register, error, validationType, placeholder }) => (
     <div className="h-14">
       <input
         type="text"
         className="border border-gray-300 rounded px-2 outline-none w-full h-10"
-        placeholder="First Name"
-        {...register('firstName', Validation.FirstNameValidation)}
-      />
-      {error && (
-        <p className="pl-2 font-light text-xs text-red-600">{error.message}</p>
-      )}
-    </div>
-  ),
-  LastName: ({ register, error }) => (
-    <div className="h-14">
-      <input
-        type="text"
-        className="border border-gray-300 rounded px-2 outline-none w-full h-10"
-        placeholder="Last Name"
-        {...register('lastName', Validation.LastNameValidation)}
+        placeholder={placeholder}
+        {...register(name, Validation[validationType])}
       />
       {error && (
         <p className="pl-2 font-light text-xs text-red-600">{error.message}</p>

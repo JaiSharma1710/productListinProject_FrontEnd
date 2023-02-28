@@ -19,12 +19,21 @@ const SignUpFormStep2 = ({ handleSignUpStage, stage2SubmitHandler }) => {
   return (
     <div className="w-1/3 h-full flex flex-col justify-center gap-2 lg:gap-4 px-1">
       <p>Step 1 - Basic Info</p>
-      <form
-        onSubmit={handleSubmit(stage2SubmitHandler)}
-        className="h-full flex flex-col justify-center gap-1 lg:gap-3"
-      >
-        <Input.FirstName register={register} error={firstNameError} />
-        <Input.LastName register={register} error={lastNameError} />
+      <form onSubmit={handleSubmit(stage2SubmitHandler)}>
+        <Input.Text
+          name="firstName"
+          validationType="FirstNameValidation"
+          register={register}
+          error={firstNameError}
+          placeholder="First Name"
+        />
+        <Input.Text
+          name="lastName"
+          validationType="LastNameValidation"
+          register={register}
+          error={lastNameError}
+          placeholder="Last Name"
+        />
         <Input.PhoneNumber register={register} error={mobileNumberError} />
         <span className="flex gap-2">
           <Button onClick={() => handleSignUpStage(0)}>Back</Button>

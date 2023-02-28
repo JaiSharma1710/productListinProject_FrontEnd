@@ -23,7 +23,7 @@ function SignIn({ setSignInSignUpState }) {
   const { email: emailError, password: passwordError } = errors;
 
   return (
-    <div className="w-1/3 h-full flex flex-col-reverse justify-end lg:flex-row">
+    <div className="w-1/3 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
       <div className="w-full h-1/2 flex flex-col gap-4 justify-start items-start px-8 lg:p-10 lg:h-full lg:w-1/2">
         <div className="flex justify-between w-full items-center">
           <h1 className="text-lg lg:text-2xl text-violet-900">Flower Store</h1>
@@ -36,12 +36,12 @@ function SignIn({ setSignInSignUpState }) {
         </div>
         <form
           onSubmit={handleSubmit(signInSubmitHandler)}
-          className="w-full h-full flex flex-col justify-center gap-3 lg:gap-8"
+          className="w-full h-full flex flex-col justify-center gap-2 lg:gap-3"
         >
           <p>Sign In</p>
           <Input.Email error={emailError} register={register} />
           <Input.Password error={passwordError} register={register} />
-          <Button>Sign In</Button>
+          <Button type="submit">Sign In</Button>
           <Button
             type="submit"
             className="flex justify-center items-center gap-2"
