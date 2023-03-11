@@ -23,17 +23,9 @@ function SignIn({ setSignInSignUpState }) {
   const { email: emailError, password: passwordError } = errors;
 
   return (
-    <div className="w-1/3 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
-      <div className="w-full h-1/2 flex flex-col gap-4 justify-start items-start px-8 lg:p-10 lg:h-full lg:w-1/2">
-        <div className="flex justify-between w-full items-center">
-          <h1 className="text-lg lg:text-2xl text-violet-900">Flower Store</h1>
-          <p
-            onClick={() => setSignInSignUpState('default')}
-            className="text-sm lg:text-lg text-violet-500 cursor-pointer"
-          >
-            Back
-          </p>
-        </div>
+    <div className="w-1/2 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
+      <div className="w-full h-1/2 flex flex-col gap-4 justify-start items-start px-8 lg:p-6 lg:h-full lg:w-1/2">
+        <h1 className="text-lg lg:text-2xl text-violet-900">Flower Store</h1>
         <form
           onSubmit={handleSubmit(signInSubmitHandler)}
           className="w-full h-full flex flex-col justify-center gap-2 lg:gap-3"
@@ -49,6 +41,15 @@ function SignIn({ setSignInSignUpState }) {
           >
             <ICONS.GOOGLE /> Sign In with Google
           </Button>
+          <p className="text-sm mt-2">
+            Not register yet?{' '}
+            <span
+              onClick={() => setSignInSignUpState('signUp')}
+              className="text-violet-900 cursor-pointer hover:underline"
+            >
+              Create an account
+            </span>
+          </p>
         </form>
       </div>
       <img

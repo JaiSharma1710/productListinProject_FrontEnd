@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Button from '../global/Button';
 import { Input } from '../global/Input';
 
-const SignUpFormStep3 = ({ handleSignUpStage }) => {
+const SignUpFormStep3 = ({ handleSignUpStage, stage3SubmitHandler }) => {
   const {
     register,
     handleSubmit,
@@ -18,12 +18,10 @@ const SignUpFormStep3 = ({ handleSignUpStage }) => {
     country: countryError,
   } = errors;
 
-  const onSubmit = (data) => console.log(data);
-
   return (
     <div className="w-1/3 h-full flex flex-col justify-center gap-2 lg:gap-4 px-1">
       <p>Step 2 - Address Info</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(stage3SubmitHandler)}>
         <Input.Text
           placeholder="Address"
           register={register}

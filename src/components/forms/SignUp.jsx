@@ -1,6 +1,7 @@
 import { IMG_CDN } from '../../constants/IMG_CDN';
 
 import { useSignUpLogin } from '../../logic/signInSignUp/signUp';
+import { UseGlobalContext } from '../../helper/GlobalContext';
 
 import SignUpFormStep1 from './SignUpStep1';
 import SignUpFormStep2 from './SignUpStep2';
@@ -15,15 +16,18 @@ const formTransitions = {
 };
 
 function SignUp({ setSignInSignUpState }) {
+  const { actions } = UseGlobalContext();
+
   const {
     signUpStage,
     stage1SubmitHandler,
     handleSignUpStage,
     stage2SubmitHandler,
-  } = useSignUpLogin();
+    stage3SubmitHandler,
+  } = useSignUpLogin(actions);
 
   return (
-    <div className="w-1/3 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
+    <div className="w-1/2 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
       <div className="w-full h-full flex flex-col gap-4 justify-start items-start px-8 lg:p-10 lg:h-full lg:w-1/2">
         <div className="flex justify-between w-full items-center">
           <h1 className="text-lg lg:text-2xl text-violet-900">Flower Store</h1>
@@ -45,7 +49,10 @@ function SignUp({ setSignInSignUpState }) {
               handleSignUpStage={handleSignUpStage}
               stage2SubmitHandler={stage2SubmitHandler}
             />
-            <SignUpFormStep3 handleSignUpStage={handleSignUpStage} />
+            <SignUpFormStep3
+              handleSignUpStage={handleSignUpStage}
+              stage3SubmitHandler={stage3SubmitHandler}
+            />
           </div>
         </div>
       </div>
