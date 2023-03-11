@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export const useSignUpLogin = ({
-  toggleModalState,
-  setModalContent,
-  setIsToasterActive,
-}) => {
+import { UseGlobalContext } from '../../helper/GlobalContext';
+
+export const useSignUpLogin = () => {
+  const {
+    actions: {
+      toggleModalState,
+      setModalContent,
+      setIsToasterActive,
+      setToasterMessage,
+    },
+  } = UseGlobalContext();
+
   const [signUpStage, setSignUpStage] = useState(0);
   const [userData, setUserData] = useState({});
 
@@ -34,16 +41,17 @@ export const useSignUpLogin = ({
 
   const createUser = async (userData) => {
     try {
-      const data = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_BASE_URL}/flower/signup`,
         userData,
       );
       setModalContent({
-        title: `Hello ${userData.firstName},welcome to flower store!!`,
+        title: `Hello ${userData.firstName}, Welcome to flower store!!`,
         description: 'your account has been created please signIn to continue',
       });
       toggleModalState();
     } catch (err) {
+      setToasterMessage(err.response.data.error);
       setIsToasterActive(true);
     }
   };

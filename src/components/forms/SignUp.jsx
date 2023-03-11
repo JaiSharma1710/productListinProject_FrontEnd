@@ -1,7 +1,6 @@
 import { IMG_CDN } from '../../constants/IMG_CDN';
 
 import { useSignUpLogin } from '../../logic/signInSignUp/signUp';
-import { UseGlobalContext } from '../../helper/GlobalContext';
 
 import SignUpFormStep1 from './SignUpStep1';
 import SignUpFormStep2 from './SignUpStep2';
@@ -16,15 +15,13 @@ const formTransitions = {
 };
 
 function SignUp({ setSignInSignUpState }) {
-  const { actions } = UseGlobalContext();
-
   const {
     signUpStage,
     stage1SubmitHandler,
     handleSignUpStage,
     stage2SubmitHandler,
     stage3SubmitHandler,
-  } = useSignUpLogin(actions);
+  } = useSignUpLogin();
 
   return (
     <div className="w-1/2 py-3 h-full flex flex-col-reverse justify-end lg:flex-row">
