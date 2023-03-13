@@ -7,8 +7,6 @@ export const UserHeaderLogic = () => {
   } = UseGlobalContext();
 
   const HandleLogOut = () => {
-    console.log('hello');
-
     setIsUserLoggedIn(false);
     LocalStorageHelper.setIsUserLoggedIn(false);
     LocalStorageHelper.removeUserData();

@@ -31,6 +31,12 @@ export const Validation = {
       message: 'Please enter your last name',
     },
   },
+  FullNameValidation: {
+    required: {
+      value: true,
+      message: 'Please enter your full name',
+    },
+  },
   AddressValidation: {
     required: {
       value: true,

@@ -5,6 +5,7 @@ export const UseGlobalStates = () => {
   const [isToasterActive, setIsToasterActive] = useState(false);
   const [toasterMessage, setToasterMessage] = useState('something went wrong');
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [modalContent, setModalContent] = useState({
     title: 'title',
     description: 'description',
@@ -19,6 +20,7 @@ export const UseGlobalStates = () => {
       setIsToasterActive,
       setToasterMessage,
       setIsUserLoggedIn,
+      setIsLoading,
     },
     globalState: {
       isModalActive,
@@ -26,6 +28,7 @@ export const UseGlobalStates = () => {
       isToasterActive,
       toasterMessage,
       isUserLoggedIn,
+      isLoading,
     },
   };
 };

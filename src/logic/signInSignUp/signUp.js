@@ -10,6 +10,7 @@ export const useSignUpLogin = () => {
       setModalContent,
       setIsToasterActive,
       setToasterMessage,
+      setIsLoading,
     },
   } = UseGlobalContext();
 
@@ -41,16 +42,19 @@ export const useSignUpLogin = () => {
 
   const createUser = async (userData) => {
     try {
+      setIsLoading(true);
       await axios.post(
         `${process.env.REACT_APP_BASE_URL}/flower/signup`,
         userData,
       );
+      setIsLoading(false);
       setModalContent({
         title: `Hello ${userData.firstName}, Welcome to flower store!!`,
         description: 'your account has been created please signIn to continue',
       });
       toggleModalState();
     } catch (err) {
+      setIsLoading(false);
       setToasterMessage(err.response.data.error);
       setIsToasterActive(true);
     }

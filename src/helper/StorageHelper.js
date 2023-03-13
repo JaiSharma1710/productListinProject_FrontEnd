@@ -6,5 +6,7 @@ export const LocalStorageHelper = {
 
   getIsUserLoggedIn: () => localStorage.getItem('isUserLoggedIn'),
 
+  getUserData: () => localStorage.getItem('userData'),
+
   removeUserData: () => localStorage.removeItem('userData'),
 };
