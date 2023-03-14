@@ -9,13 +9,12 @@ import ProfileTab from '../components/profile/ProfileTab';
 import DashboardTab from '../components/profile/DashboardTab';
 import PasswordTab from '../components/profile/PasswordTab';
 
-function Profile({ userData }) {
+function Dashboard({ userData }) {
   const {
     actions: { setIsUserLoggedIn },
   } = UseGlobalContext();
-
-  const { pathname, search } = useLocation();
-  const navigate = useNavigate();
+  const { search } = useLocation(); //to get the current url
+  const navigate = useNavigate(); //to navigate to different paths
 
   const HandleLogOut = () => {
     setIsUserLoggedIn(false);
@@ -27,7 +26,7 @@ function Profile({ userData }) {
     if (tabName === 'Logout') {
       navigate('/');
       HandleLogOut();
-    } else navigate(`/profile?tab=${tabName.toLowerCase()}`);
+    } else navigate(`/dashboard?tab=${tabName.toLowerCase()}`);
   };
 
   return (
@@ -36,20 +35,24 @@ function Profile({ userData }) {
       <div className="block animate__animated animate__fadeIn absolute bottom-20 right-0 bg-gradient-to-r from-violet-200 to-indigo-600 rounded-3xl rotate-45 w-36 h-36" />
       <div className="animate__animated animate__fadeIn absolute bottom-8 left-0 bg-gradient-to-r from-violet-300 to-indigo-600 rounded-3xl rotate-45 w-36 h-36" />
       <div className="bg-violet-100 lg:h-full shadow-md flex flex-col lg:flex-row gap-4 w-full p-6 my-auto rounded-md">
-        <ProfileLeftSection
+        <DashboardLeftSection
           firstName={userData.firstName}
           lastName={userData.lastName}
           HandleTabChangeClick={HandleTabChangeClick}
         />
-        <ProfileRightSection activeTab={search} userData={userData} />
+        <DashboardRightSection activeTab={search} userData={userData} />
       </div>
     </>
   );
 }
 
-export default Profile;
+export default Dashboard;
 
-const ProfileLeftSection = ({ firstName, lastName, HandleTabChangeClick }) => {
+const DashboardLeftSection = ({
+  firstName,
+  lastName,
+  HandleTabChangeClick,
+}) => {
   const Data = ['Dashboard', 'Profile', 'Password', 'Logout'];
 
   return (
@@ -78,7 +81,7 @@ const ProfileLeftSection = ({ firstName, lastName, HandleTabChangeClick }) => {
   );
 };
 
-const ProfileRightSection = ({ userData, activeTab }) => {
+const DashboardRightSection = ({ userData, activeTab }) => {
   const tabName = activeTab?.split('=')?.[1];
 
   const tabList = {

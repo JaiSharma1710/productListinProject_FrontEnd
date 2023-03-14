@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { LocalStorageHelper } from '../../helper/StorageHelper';
 import Button from '../global/Button';
 import { Input } from '../global/Input';
 
@@ -6,9 +8,16 @@ function ProfileUpdateFrom({ setIsUpdateFormActive }) {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fullName: '',
+      email: '',
+      mobileNumber: '',
+      address: '',
+    },
+  });
 
   const {
     fullName: fullNameError,
@@ -16,6 +25,19 @@ function ProfileUpdateFrom({ setIsUpdateFormActive }) {
     mobileNumber: mobileNumberError,
     address: addressError,
   } = errors;
+
+  useEffect(() => {
+    const { firstName, lastName, email, mobileNumber, address } = JSON.parse(
+      LocalStorageHelper.getUserData(),
+    );
+
+    reset({
+      fullName: `${firstName} ${lastName}`,
+      email: email,
+      mobileNumber: mobileNumber,
+      address: address,
+    });
+  }, []);
 
   const onSubmit = (data) => console.log(data);
 

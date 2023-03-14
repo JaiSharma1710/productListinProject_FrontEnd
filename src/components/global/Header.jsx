@@ -30,7 +30,13 @@ function Header({ userData }) {
             Home
           </li>
           <li
-            onClick={() => navigate('/profile')}
+            onClick={() => navigate('/dashboard?tab=dashboard')}
+            className="font-semibold cursor-pointer hover:text-violet-700"
+          >
+            Dashboard
+          </li>
+          <li
+            onClick={() => navigate('/dashboard?tab=profile')}
             className="font-semibold cursor-pointer hover:text-violet-700"
           >
             Profile

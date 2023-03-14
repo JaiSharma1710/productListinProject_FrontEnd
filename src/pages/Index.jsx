@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Header from '../components/global/Header';
 import Home from './Home';
-import Profile from './Profile';
+import Dashboard from './Dashboard';
 
 import { LocalStorageHelper } from '../helper/StorageHelper';
 
@@ -20,7 +20,10 @@ function Index() {
       <section className="p-4 h-full pt-24 relative overflow-y-scroll overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home userData={userData} />} />
-          <Route path="/profile" element={<Profile userData={userData} />} />
+          <Route
+            path="/dashboard"
+            element={<Dashboard userData={userData} />}
+          />
         </Routes>
       </section>
     </div>
